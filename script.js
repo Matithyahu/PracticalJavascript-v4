@@ -15,7 +15,7 @@ var todoList = {
       todoText: todoText,
       completed: false
     });
-    // this.displayTodos();
+    this.displayTodos(); // Display aftr adding a todo
   },
 
   changeTodo: function(position, todoText) {
@@ -26,5 +26,12 @@ var todoList = {
   deleteTodo: function(position) {
     this.todos.splice(position, 1);
     this.displayTodos();
+  },
+  toggleCompleted: function(position) {
+    if (this.todos[position].completed === true) {
+      this.todos[position].completed = false;
+    } else {
+      this.todos[position].completed = true;
+    }
   }
 }
