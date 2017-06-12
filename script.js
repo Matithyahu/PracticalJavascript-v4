@@ -3,7 +3,12 @@ var todoList = {
   displayTodos: function() {
     var loopTodos = function() {
       for (var i = 0; i < todoList.todos.length; i++){
-        console.log(" * " + todoList.todos[i].todoText );
+        if (todoList.todos[i].completed === false) {
+          var checkMark = " * ";
+        } else {
+          var checkMark = " x ";
+        }
+        console.log(checkMark + todoList.todos[i].todoText );
         }
     }
     console.log("My Todos: ");
@@ -27,11 +32,10 @@ var todoList = {
     this.todos.splice(position, 1);
     this.displayTodos();
   },
+
   toggleCompleted: function(position) {
-    if (this.todos[position].completed === true) {
-      this.todos[position].completed = false;
-    } else {
-      this.todos[position].completed = true;
-    }
+    var toggle = this.todos[position];
+    toggle.completed = !toggle.completed;
+    this.displayTodos();
   }
 }
